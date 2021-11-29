@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Entity_Framework_Core.Views.EditBookPage">
+    <ContentPage.Content>
+        <StackLayout Margin="5" BackgroundColor="LightBlue">
+            <Label 
+                Text="Editar Obra Literaria"
+                HorizontalOptions="CenterAndExpand"
+                FontSize="22"
+                TextColor="#77d065"/>
+
+            <Entry 
+                Placeholder="Introduce el Titulo"
+                Keyboard="Text"
+                Text="{Binding Titulo}"
+                 ClearButtonVisibility="WhileEditing"
+                x:Name="txtTitulo"/>
+            <Entry 
+                Placeholder="Introduce el author"
+                Keyboard="Text"
+                Text="{Binding Author}"
+                 ClearButtonVisibility="WhileEditing"
+                x:Name="txtAuthor"/>
+
+            <Entry 
+                Keyboard="Numeric"
+                Placeholder="Introduce el Precio"
+                 ClearButtonVisibility="WhileEditing"
+                Text="{Binding Precio}"
+                x:Name="txtPrecio"/>
+            <DatePicker 
+                x:Name="txtFecha"
+                
+                Format="d"
+                Date='{Binding Fecha}'
+                />
+            <Label Text="Publicado"
+                   VerticalOptions="Center" />
+            <Switch x:Name="includeSwitchDisponible"
+                    IsToggled ="{Binding Disponible}"
+            />
+            <Button 
+                Text="Guardar"
+                x:Name="btnGuardar"
+                HorizontalOptions="Center"
+                Command="{Binding UpdateCommand}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

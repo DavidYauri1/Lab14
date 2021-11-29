@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Entity_Framework_Core.Views.BookPage">
+    <ContentPage.Content>
+        <StackLayout Margin="5" BackgroundColor="LightBlue">
+            <Label 
+                Text="Registro de Obras"
+                FontSize="24"
+                HorizontalOptions="CenterAndExpand"
+                TextColor="#77d065"/>
+
+            <Entry 
+                Placeholder="Introduce el Titulo"
+                Keyboard="Text"
+                Text="{Binding Titulo}"
+                x:Name="txtTitulo"/>
+            <Entry 
+                Placeholder="Introduce el author"
+                Keyboard="Text"
+                Text="{Binding Author}"
+                x:Name="txtAuthor"/>
+
+            <Entry 
+                Keyboard="Numeric"
+                Placeholder="Introduce el Precio"
+                Text="{Binding Precio}"
+                x:Name="txtPrecio"/>
+            <DatePicker 
+                x:Name="txtFecha"
+                
+                Format="d"
+                Date='{Binding Fecha}'
+                />
+            
+            <Switch x:Name="includeSwitchDisponible"
+                    IsToggled ="{Binding Disponible}"
+            />
+            <Button 
+                Text="Guardar"
+                x:Name="btnGuardar"
+                HorizontalOptions="Center"
+                Command="{Binding CreateCommand}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

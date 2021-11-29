@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Entity_Framework_Core.Views.BooksPage">
+    <ContentPage.Content>
+
+        <StackLayout>
+            
+            <StackLayout.Padding>
+                <OnPlatform 
+                    x:TypeArguments="Thickness"
+                    Android="20"
+                    iOS="50"/>
+            </StackLayout.Padding>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Agregar"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand" 
+                    Command="{Binding NeWBookCommand}"                             
+                         />
+                <Button Text="Listar"                  
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand" 
+                    Command="{Binding LoadbookCommand}"                             
+                         />
+            </StackLayout>
+            <ListView
+                x:Name="books"
+                ItemsSource="{Binding Books}"
+                HasUnevenRows="True"            
+                SeparatorVisibility="None"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem 
+                                     Command="{Binding Path=BindingContext.EditBookCommand, Source={x:Reference Name=books} }"
+                                     CommandParameter="{Binding BookID}"
+                                     Text="Editar" />
+                                <MenuItem 
+                                    Command="{Binding Path=BindingContext.DeleteCommand , Source={x:Reference Name=books} }"
+                                    CommandParameter="{Binding BookID}"
+                                    Text="Eliminar"
+                                    IsDestructive="True"/>
+                            </ViewCell.ContextActions>
+                            <Frame
+                                CornerRadius="20"
+                                HasShadow="True"
+                                Margin="3">
+
+                                <StackLayout
+                                    Orientation="Vertical">
+                                    <Grid
+                                    VerticalOptions="CenterAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Text="Author: "
+                                            FontAttributes="Bold"/>
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Text="{Binding Author}"/>
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Text="Título: "
+                                            FontAttributes="Bold"/>
+
+                                        <Label 
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Text="{Binding Titulo}"/>
+
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Text="Precio: "
+                                            FontAttributes="Bold"/>
+
+                                        <Label 
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            Text="{Binding Precio}"/>
+
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            Text="Año: "
+                                            FontAttributes="Bold"/>
+
+                                        <Label
+                                            
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            Text="{Binding Fecha}"/>
+                                        <Label
+                                            Grid.Row="4"
+                                            Grid.Column="0"
+                                            Text="Publicado: "
+                                            FontAttributes="Bold"/>
+
+                                        <Label
+                                            Grid.Row="4"
+                                            Grid.Column="1"
+                                            Text="{Binding Disponible}"
+                                            />
+                                        <Label
+                                            Grid.Row="5"
+                                            Grid.Column="0"
+                                            Text="ID: "
+                                            FontAttributes="Bold"/>
+
+                                        <Label
+                                            Grid.Row="5"
+                                            Grid.Column="1"
+                                            Text="{Binding BookID}"/>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    
